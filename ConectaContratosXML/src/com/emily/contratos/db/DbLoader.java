@@ -21,7 +21,7 @@ public class DbLoader {
     }
 
     public void insertContracts(List<Contract> contracts) throws SQLException {
-        String sql = "INSERT INTO contratos_menores (" +
+        String sql = "INSERT INTO contratos (" +
                 "numero_expediente, adjudicatario, importe, fecha_adjudicacion, " +
                 "organo_contratacion, tipo_contrato, objeto, procedimiento, observaciones" +
                 ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -32,7 +32,8 @@ public class DbLoader {
             conn.setAutoCommit(false);
 
             for (Contract c : contracts) {
-                ps.setString(1, c.getNumeroExpediente());
+            	ps.setString(1, c.getNumeroExpediente() != null ? c.getNumeroExpediente() : "SIN_EXPEDIENTE");
+
                 ps.setString(2, c.getAdjudicatario());
                 if (c.getImporte() != null) {
                     ps.setBigDecimal(3, c.getImporte());

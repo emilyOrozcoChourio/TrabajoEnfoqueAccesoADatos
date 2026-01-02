@@ -17,15 +17,17 @@ public class App {
     public static void main(String[] args) {
     	 // Ruta local del XML
         File xmlFile = new File("C:\\Users\\Usuario\\Desktop\\DAM 2do AÑO\\Acceso a datos\\trabajo de enfoque\\doc\\contratos.xml");
-    	
+        System.out.println("Ruta: " + xmlFile.getAbsolutePath());
+        System.out.println("Existe? " + xmlFile.exists());
+
     	
         // Parámetros de conexión a MySQL (ajusta según tu entorno)
-        String jdbcUrl = "jdbc:mysql://localhost:3306/contratos_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/contratos_andalucia?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         String user = "root";
         String pass = "emily.15";
 
         // Archivo de salida sin "tipo_contrato"
-        File outXml = new File("contratos_sin_tipo_contrato.xml");
+        File outXml = new File("contratos.xml");
 
         try {
             // 1) Leer y parsear el XML
